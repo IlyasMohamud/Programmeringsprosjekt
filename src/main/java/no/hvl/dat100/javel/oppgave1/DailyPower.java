@@ -83,7 +83,7 @@ public class DailyPower {
         for (int i = 0; i < lengthz; i++) {
             price += usage[i] * NORGESPRIS_KWH;
         }
-        // TODO
+        
 
         return price;
     }
@@ -111,7 +111,7 @@ public class DailyPower {
             average += usage[i];
         }
 
-        // TODO
+        
 
         return average/lengthz;
     }
