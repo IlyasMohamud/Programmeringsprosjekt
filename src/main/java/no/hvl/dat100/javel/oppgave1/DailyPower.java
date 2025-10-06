@@ -5,14 +5,18 @@ public class DailyPower {
     // a) print power prices during a day
     public static void printPowerPrices(double[] prices) {
 
-        // TODO
+        for (double price : prices) {
+            System.out.printf("%.2f kWh ", price);
+        }
 
     }
 
     // b) print power usage during a day
     public static void printPowerUsage(double[] usage) {
 
-        // TODO
+        for (double curUsage : usage) {
+            System.out.printf("%.2f kr ", curUsage);
+        }
 
     }
 
@@ -20,8 +24,10 @@ public class DailyPower {
     public static double computePowerUsage(double[] usage) {
 
         double sum = 0;
-
-        // TODO
+        int lengthz = usage.length;
+        for (int i = 0; i < lengthz; i++) {
+            sum += usage[i];
+        }
 
         return sum;
     }
@@ -31,7 +37,10 @@ public class DailyPower {
 
         double price = 0;
 
-        // TODO
+        int lengthz = usage.length;
+        for (int i = 0; i < lengthz; i++) {
+            price += usage[i]* prices[i];
+        }
 
         return price;
     }
@@ -43,8 +52,11 @@ public class DailyPower {
     private static double getSupport(double usage, double price) {
 
         double support = 0;
-
-        // TODO
+        double result = usage * price;
+        if (result > THRESHOLD) {
+            support = (result - THRESHOLD) * PERCENTAGE;
+        }
+        
 
         return support;
     }
@@ -53,8 +65,10 @@ public class DailyPower {
     public static double computePowerSupport(double[] usage, double[] prices) {
 
         double support = 0;
-
-        // TODO
+        int lengthz = usage.length;
+        for (int i = 0; i < lengthz; i++) {
+            support += getSupport(usage[i], prices[i]);
+        }
 
         return support;
     }
@@ -65,7 +79,10 @@ public class DailyPower {
     public static double computeNorgesPrice(double[] usage) {
 
         double price = 0;
-
+        int lengthz = usage.length;
+        for (int i = 0; i < lengthz; i++) {
+            price += usage[i] * NORGESPRIS_KWH;
+        }
         // TODO
 
         return price;
@@ -76,7 +93,12 @@ public class DailyPower {
 
         double temp_max = 0;
 
-        // TODO
+        int lengthz = usage.length;
+        for (int i = 0; i < lengthz; i++) {
+            if (usage[i] > temp_max) {
+                temp_max = usage[i];
+            }
+        }
 
         return temp_max;
     }
@@ -84,9 +106,13 @@ public class DailyPower {
     public static double findAvgPower(double[] usage) {
 
         double average = 0;
+        int lengthz = usage.length;
+        for (int i = 0; i < lengthz; i++) {
+            average += usage[i];
+        }
 
         // TODO
 
-        return average;
+        return average/lengthz;
     }
 }
