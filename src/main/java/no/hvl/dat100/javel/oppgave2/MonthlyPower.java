@@ -1,7 +1,7 @@
 package no.hvl.dat100.javel.oppgave2;
 
 import no.hvl.dat100.javel.oppgave1.DailyPower;
-import no.hvl.dat100.javel.oppgave1.DayPowerData;
+
 
 public class MonthlyPower {
 
@@ -38,18 +38,23 @@ public class MonthlyPower {
     // d) determine whether a given threshold in powerusage for the month has been exceeded
     public static boolean exceedThreshold(double[][] powerusage, double threshold) {
 
-        boolean exceeded = false;
-        double usage = 0;
-
-        usage = computePowerUsage(powerusage);
-        exceeded = (usage>threshold) ? true : false;
-        return exceeded;
+        int i = 0;
+        double sum = 0;
+        while (i < powerusage.length && sum <= threshold) {
+            sum += DailyPower.computePowerUsage(powerusage[i]);
+            i++;
+        }
+        return sum > threshold;
     }
 
     // e) compute spot price
     public static double computeSpotPrice(double[][] usage, double[][] prices) {
 
         double price = 0;
+        int size = prices.length;
+        for (int i = 0; i < size; i++) {
+            price+=DailyPower.computeSpotPrice(usage[i],prices[i]);
+        }
 
         
 
@@ -60,8 +65,11 @@ public class MonthlyPower {
     public static double computePowerSupport(double[][] usage, double[][] prices) {
 
         double support = 0;
-
-        // TODO
+        int size = prices.length;
+        for (int i = 0; i < size; i++) {
+            support+=DailyPower.computePowerSupport(usage[i],prices[i]);
+        }
+        
 
         return support;
     }
@@ -70,8 +78,10 @@ public class MonthlyPower {
     public static double computeNorgesPrice(double[][] usage) {
 
         double price = 0;
-
-        // TODO
+        int size = usage.length;
+        for (int i = 0; i < size; i++) {
+            price+=DailyPower.computeNorgesPrice(usage[i]);
+        }
 
         return price;
     }

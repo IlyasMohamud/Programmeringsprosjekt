@@ -1,8 +1,5 @@
 package no.hvl.dat100.javel.oppgave2;
 
-import no.hvl.dat100.javel.oppgave1.DailyPower;
-import no.hvl.dat100.javel.oppgave1.DayPowerData;
-
 
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -33,9 +30,19 @@ public class MonthMain {
 
     // d) exceed threshold
     boolean exceeded = MonthlyPower.exceedThreshold(power_usage_month, 900);
-    System.out.printf("Usage is %s", (exceeded) ? "HIGHER than threshold" : "LOWER than trheshold");
-    
+    System.out.printf("Usage is %s", (exceeded) ? "HIGHER than threshold\n" : "LOWER than trheshold\n");
 
+    //e) monthly spot price
+    double monthly_spot = MonthlyPower.computeSpotPrice(power_usage_month, power_prices_month);
+    System.out.printf("Spot price: %.2f kr\n", monthly_spot);
+
+    // f) monthly power support
+    double monthly_support = MonthlyPower.computePowerSupport(power_usage_month, power_prices_month);
+    System.out.printf("Power Support: %.2f kr\n", monthly_support);
+
+    // g) Norgesprice for the month
+    double monthly_norgesprice = MonthlyPower.computeNorgesPrice(power_usage_month);
+    System.out.printf("Norgesprice: %.2f kr\n", monthly_norgesprice);
 
 
     }
