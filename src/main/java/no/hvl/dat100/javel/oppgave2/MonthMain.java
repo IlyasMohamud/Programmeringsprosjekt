@@ -1,6 +1,9 @@
 package no.hvl.dat100.javel.oppgave2;
 
+import no.hvl.dat100.javel.oppgave1.DailyPower;
 import no.hvl.dat100.javel.oppgave1.DayPowerData;
+
+
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -17,13 +20,23 @@ public class MonthMain {
         System.out.println("==============");
         System.out.println();
 
-        /*
-        TODO
+                // a) print prices and usage
+    System.out.println("Power Prices:");
+    MonthlyPower.print_PowerPrices(power_prices_month);
+    System.out.println("\nPower Usage:");
+    MonthlyPower.print_PowerUsage(power_usage_month);
+    System.out.println();
 
-         Write code that tests the methods you implement in the MonthlyPower class
-         Remember to teste the methods as you implement them
-         Remember to also to check that you get the expected results
-         */
+    // c) total usage
+    double totalUsage = MonthlyPower.computePowerUsage(power_usage_month);
+    System.out.printf("Total Usage: %.2f kWh\n", totalUsage);
+
+    // d) exceed threshold
+    boolean exceeded = MonthlyPower.exceedThreshold(power_usage_month, 900);
+    System.out.printf("Usage is %s", (exceeded) ? "HIGHER than threshold" : "LOWER than trheshold");
+    
+
+
 
     }
 }

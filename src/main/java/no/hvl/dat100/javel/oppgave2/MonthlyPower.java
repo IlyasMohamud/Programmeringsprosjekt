@@ -1,20 +1,24 @@
 package no.hvl.dat100.javel.oppgave2;
 
 import no.hvl.dat100.javel.oppgave1.DailyPower;
+import no.hvl.dat100.javel.oppgave1.DayPowerData;
 
 public class MonthlyPower {
 
     // a) print power usage for a month
     public static void print_PowerUsage(double[][] usage) {
 
-        // TODO
+        for(double[]usages : usage){
+            DailyPower.printPowerUsage(usages);
+        }
 
     }
 
     // b) print power prices for a month
     public static void print_PowerPrices(double[][] prices) {
-
-        // TODO
+        for(double[]price :prices){
+            DailyPower.printPowerPrices(price);
+        }
 
     }
 
@@ -23,7 +27,10 @@ public class MonthlyPower {
 
         double sum = 0;
 
-        // TODO
+        for(double[]usages : usage){
+
+            sum+= DailyPower.computePowerUsage(usages);
+        }
 
         return sum;
     }
@@ -34,8 +41,8 @@ public class MonthlyPower {
         boolean exceeded = false;
         double usage = 0;
 
-        // TODO
-
+        usage = computePowerUsage(powerusage);
+        exceeded = (usage>threshold) ? true : false;
         return exceeded;
     }
 
@@ -44,7 +51,7 @@ public class MonthlyPower {
 
         double price = 0;
 
-        // TODO
+        
 
         return price;
     }
